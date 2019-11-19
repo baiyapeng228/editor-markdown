@@ -25,6 +25,6 @@ public class EditorServiceImpl implements EditorService {
 
     @Override
     public Editor findOne(int id) {
-        return repository.findOne(id);
+        return repository.getOne(id);
     }
 }

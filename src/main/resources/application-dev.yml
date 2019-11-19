@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/editor-markdown
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/editor-markdown?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT&nullCatalogMeansCurrent=true
     username: root
     password: root
   jpa:
@@ -24,11 +24,11 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates
     request-context-attribute: re
-  http:
+  #上传文件大小
+  servlet:
     multipart:
-      max-file-size: 10Mb
-      max-request-size: 10Mb
+      max-request-size: 100MB
+      max-file-size: 100MB
+#自定义图片储存路径
 img:
   location: D:/upload/
-logging:
-  level: debug
