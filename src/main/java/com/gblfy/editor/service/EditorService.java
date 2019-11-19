@@ -1,6 +1,6 @@
 package com.gblfy.editor.service;
 
-import com.gblfy.editor.domain.Editor;
+import com.gblfy.editor.entity.Editor;
 
 /**
  * @author gblfy

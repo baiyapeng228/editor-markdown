@@ -1,7 +1,7 @@
 package com.gblfy.editor.utils;
 
 
-import com.gblfy.editor.domain.Result;
+import com.gblfy.editor.entity.Result;
 
 /**
  * @author gblfy

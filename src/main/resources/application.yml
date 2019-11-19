@@ -2,3 +2,6 @@
 spring:
   profiles:
     active: dev
+mybatis-plus:
+  typeAliasesPackage: com.gblfy.editor.entity
+  mapper-locations: classpath:com/gblfy/editor/**/mapping/*.xml

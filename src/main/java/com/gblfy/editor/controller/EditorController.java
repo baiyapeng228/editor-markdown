@@ -1,7 +1,7 @@
 package com.gblfy.editor.controller;
 
-import com.gblfy.editor.domain.Editor;
-import com.gblfy.editor.domain.Result;
+import com.gblfy.editor.entity.Editor;
+import com.gblfy.editor.entity.Result;
 import com.gblfy.editor.service.EditorService;
 import com.gblfy.editor.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;

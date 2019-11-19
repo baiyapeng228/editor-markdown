@@ -4,11 +4,6 @@ spring:
     url: jdbc:mysql://localhost:3306/editor-markdown?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT&nullCatalogMeansCurrent=true
     username: root
     password: root
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        enable_lazy_load_no_trans: true
   freemarker:
     allow-request-override: false
     allow-session-override: false

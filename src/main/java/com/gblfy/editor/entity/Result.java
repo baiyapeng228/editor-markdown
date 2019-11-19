@@ -1,4 +1,4 @@
-package com.gblfy.editor.domain;
+package com.gblfy.editor.entity;
 
 import lombok.Data;
 

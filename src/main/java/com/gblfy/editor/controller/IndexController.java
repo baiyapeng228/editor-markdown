@@ -1,6 +1,6 @@
 package com.gblfy.editor.controller;
 
-import com.gblfy.editor.domain.Editor;
+import com.gblfy.editor.entity.Editor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

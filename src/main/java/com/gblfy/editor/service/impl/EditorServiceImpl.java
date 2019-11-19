@@ -1,7 +1,7 @@
 package com.gblfy.editor.service.impl;
 
-import com.gblfy.editor.domain.Editor;
-import com.gblfy.editor.repository.EditorRepository;
+import com.gblfy.editor.entity.Editor;
+import com.gblfy.editor.mapper.EditorMapper;
 import com.gblfy.editor.service.EditorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,16 +15,16 @@ import org.springframework.stereotype.Service;
 public class EditorServiceImpl implements EditorService {
 
     @Autowired
-    private EditorRepository repository;
+    private EditorMapper editorMapper;
 
 
     @Override
     public void save(Editor editor) {
-        repository.save(editor);
+        editorMapper.insert(editor);
     }
 
     @Override
     public Editor findOne(int id) {
-        return repository.getOne(id);
+        return editorMapper.selectById(id);
     }
 }
