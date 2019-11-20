@@ -51,17 +51,17 @@ CREATE TABLE `editor` (
 
 # SpringBoot集成Editor.md 流程
 
-##1.下载插件
+## 1.下载插件
 
 项目地址：[Editor.md](https://github.com/pandao/editor.md)
 
 解压目录结构：
 ![解压后的截图](https://img-blog.csdnimg.cn/20191120125125650.png)
-##2. 配置Editor.md
+## 2. 配置Editor.md
 
 将exapmles文件夹中的simple.html放置到项目中，并配置对应的css和js文件
 
-##3. 配置编辑器
+## 3. 配置编辑器
 
 ```html
 ......
@@ -79,7 +79,7 @@ CREATE TABLE `editor` (
     </div>
 ```
 
-##4. 初始化编辑器
+## 4. 初始化编辑器
 
 
 ```javascript
@@ -101,10 +101,10 @@ var testEditor;
     });
 ```
 
-##5. 访问地址
+## 5. 访问地址
 [http://localhost/](http://localhost:8080/)
 
-##6. 效果如下
+## 6. 效果如下
 ![初始化页面](https://img-blog.csdnimg.cn/2019112013213774.png)
 
 这样就实现了最简单的editor.md编辑器！！！
