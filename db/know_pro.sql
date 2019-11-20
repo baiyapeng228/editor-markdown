@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `editor`;
 CREATE TABLE `editor` (
   `id` bigint(20) NOT NULL COMMENT '主键',
   `text_content` longtext COMMENT '内容',
