@@ -33,7 +33,7 @@ public class FileController {
     private String folder;
 
     /**
-     * 上传图片
+     * 上传图片至指定图片静态目录
      *
      * @param request
      * @param file

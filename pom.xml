@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>editor-markdown</name>
-	<description>editor markdown project for Spring Boot</description>
+	<description>Spring Boot整合editor markdown MyabtisPlus版本</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -22,36 +22,44 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<!--mybatisplus版本-->
 		<mybatisplus.version>3.1.2</mybatisplus.version>
 	</properties>
 
 	<dependencies>
+		<!--SpringMVC启动器-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--freemarker 模板引擎-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
+		<!--lombok插件-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.16.18</version>
 		</dependency>
+		<!--文件传输上传工具包-->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>
+		<!--数据源-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>-->
+		<!--MYSQL数据库驱动-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<!--mybatis-plus Start-->
 		<dependency>
 			<groupId>com.baomidou</groupId>
@@ -63,17 +71,11 @@
 			<artifactId>mybatis-plus</artifactId>
 			<version>${mybatisplus.version}</version>
 		</dependency>
-		<!--MYSQL数据库驱动-->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!--maven 编译打包插件-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

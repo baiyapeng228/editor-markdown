@@ -1,3 +1,4 @@
+#数据库mysql
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,11 +20,11 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates
     request-context-attribute: re
-  #上传文件大小
+#上传文件大小 设置
   servlet:
     multipart:
       max-request-size: 100MB
       max-file-size: 100MB
-#自定义图片储存路径
+#自定义图片储存路径 winwows D:/upload/ linux /upload/
 img:
   location: D:/upload/

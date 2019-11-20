@@ -34,7 +34,8 @@ public class EditorController {
     }
 
     /**
-     * 预览
+     * 根据主键id预览博文
+     *
      * @param id
      * @param map
      * @return
@@ -49,7 +50,8 @@ public class EditorController {
     }
 
     /**
-     * 编辑
+     * 根据主键id编辑博文
+     *
      * @param id
      * @param map
      * @return
