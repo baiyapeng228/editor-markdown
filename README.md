@@ -1,20 +1,67 @@
-> Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。
-
+> 本章将使用`SpringBoot`整合`Editor.md`构建Markdown编辑器共分为三个版本。
 ## 前言
-[Editor.md](https://github.com/pandao/editor.md) 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。本章将使用`SpringBoot`整合`Editor.md`构建Markdown编辑器。
+[Editor.md](https://github.com/pandao/editor.md) 是一款开源的、可嵌入的 Markdown 在线编辑器（组件）,基于 CodeMirror、jQuery 和 Marked 构建。
 
-### 下载插件
+## 使用手册：
+1.下载项目
+```$xslt
+git clone git@github.com:gb-heima/editor-markdown.git
+```
+2.创建数据库 
+
+数据 库名 : editor-markdown 
+数据库编码: utf-8
+
+3.初始化数据库脚本
+```$xslt
+DROP TABLE IF EXISTS `editor`;
+CREATE TABLE `editor` (
+  `id` bigint(20) NOT NULL COMMENT '主键',
+  `text_content` longtext COMMENT '内容',
+  `content` longtext,
+  `create_time` datetime DEFAULT NULL COMMENT '修改日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+4.修改数据库用户名/密码 默认root/root
+![在数据库连接](https://img-blog.csdnimg.cn/20191120131045401.png)
+
+5.启动项目 任选其一即可
+![启动项目方式01](https://img-blog.csdnimg.cn/20191120131330128.png)
+![启动项目方式02](https://img-blog.csdnimg.cn/20191120131506586.png)
+
+6.浏览器输入localhost访问 默认为博文发表页面
+![初始化页面](https://img-blog.csdnimg.cn/2019112013213774.png)
+![上传图片发表博文](https://img-blog.csdnimg.cn/20191120124842437.png)
+
+7.预览博文
+[预览博文http://localhost/editorWeb/preview/{id}](http://localhost/editorWeb/preview/{id})
+
+![右侧为预览效果图](https://img-blog.csdnimg.cn/20191120133343192.png)
+
+8.编辑博文
+[编辑博文http://localhost/editorWeb/edit/{id}](http://localhost/editorWeb/edit/{id})
+
+![编辑页面](https://img-blog.csdnimg.cn/20191120133522696.png)
+
+9.博客地址：[https://blog.csdn.net/weixin_40816738/article/details/103160267](https://blog.csdn.net/weixin_40816738/article/details/103160267)
+
+到这里 SpringBoot集成Editor.md已经完成了！！！
+----
+
+# SpringBoot集成Editor.md 流程
+
+##1.下载插件
 
 项目地址：[Editor.md](https://github.com/pandao/editor.md)
 
 解压目录结构：
-[![https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot03.png](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot03.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot03.png")](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot03.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot03.png")
-
-### 配置Editor.md
+![解压后的截图](https://img-blog.csdnimg.cn/20191120125125650.png)
+##2. 配置Editor.md
 
 将exapmles文件夹中的simple.html放置到项目中，并配置对应的css和js文件
 
-#### 配置编辑器
+##3. 配置编辑器
 
 ```html
 ......
@@ -32,7 +79,7 @@
     </div>
 ```
 
-#### 初始化编辑器
+##4. 初始化编辑器
 
 
 ```javascript
@@ -54,15 +101,16 @@ var testEditor;
     });
 ```
 
-这样就实现了最简单的editor.md编辑器，效果如下：
+##5. 访问地址
+[http://localhost/](http://localhost:8080/)
 
-[![https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot05.png](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot05.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot05.png")](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot05.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/springboot/springboot05.png")
+##6. 效果如下
+![初始化页面](https://img-blog.csdnimg.cn/2019112013213774.png)
+
+这样就实现了最简单的editor.md编辑器！！！
 
 
-
-- 访问地址：[http://localhost:8080/](http://localhost:8080/)
-
-### 图片上传
+##7. 图片上传
 
 由于在初始化编辑器中配置的图片上传地址为`imageUploadURL: "/file",`，与之对应，我们在`/file`处理文件上传即可
 
@@ -111,7 +159,7 @@ public class FileController {
 
 ```
 
-### 文件预览
+##8. 文件预览
 
 表单POST提交时，editor.md将我们的markdown语法文档翻译成了HTML语言，并将html字符串提交给了我们的后台，后台将这些HTML字符串持久化到数据库中。具体在页面显示做法如下：
 
@@ -138,18 +186,9 @@ public class FileController {
 </html>
 ```
 
-
-
-- 预览地址：[http://localhost:8080/editorWeb/preview/{id}](http://localhost:8080/editorWeb/preview/{id})
-
-
-- 编辑地址：[http://localhost:8080/editorWeb/edit/{id}](http://localhost:8080/editorWeb/edit/{id})
+- 预览地址：[http://localhost/editorWeb/preview/{id}](http://localhost/editorWeb/preview/{id})
+- 编辑地址：[http://localhost/editorWeb/edit/{id}](http://localhost/editorWeb/edit/{id})
+- 博客地址：[https://blog.csdn.net/weixin_40816738/article/details/103160267](https://blog.csdn.net/weixin_40816738/article/details/103160267)
 
 ## 代码下载 ##
-从我的 github 中下载，[https://github.com/longfeizheng/editor-markdown](https://github.com/longfeizheng/editor-markdown)
-
----
-[![https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/wechat/xiaochengxu.png](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/wechat/xiaochengxu.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/wechat/xiaochengxu.png")](https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/wechat/xiaochengxu.png "https://raw.githubusercontent.com/longfeizheng/longfeizheng.github.io/master/images/wechat/xiaochengxu.png")
-
-> 🙂🙂🙂关注微信小程序**java架构师历程**
-上下班的路上无聊吗？还在看小说、新闻吗？不知道怎样提高自己的技术吗？来吧这里有你需要的java架构文章，1.5w+的java工程师都在看，你还在等什么？
+从我的 github 中下载，[https://github.com/gb-heima/editor-markdown](https://github.com/gb-heima/editor-markdown)
