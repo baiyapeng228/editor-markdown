@@ -4,7 +4,7 @@ server:
 #环境配置
 spring:
   profiles:
-    active: dev
+    active: test
 #mybatis扫描包配置
 mybatis-plus:
   typeAliasesPackage: com.gblfy.editor.entity
