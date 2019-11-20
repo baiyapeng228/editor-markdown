@@ -17,7 +17,7 @@ import java.util.Date;
 public class Editor {
 
     @TableId(value = "id", type = IdType.ID_WORKER)
-    private Integer id;
+    private Long id;
     private String content;
     private String textContent="";
     private Date createTime;

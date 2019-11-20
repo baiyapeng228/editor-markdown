@@ -40,7 +40,7 @@ public class EditorController {
      * @return
      */
     @GetMapping("/preview/{id}")
-    public ModelAndView preview(@PathVariable(value = "id") int id, Map map) {
+    public ModelAndView preview(@PathVariable(value = "id") long id, Map map) {
 
         Editor editor = editorService.findOne(id);
 
@@ -55,7 +55,7 @@ public class EditorController {
      * @return
      */
     @GetMapping("/edit/{id}")
-    public ModelAndView edit(@PathVariable(value = "id") int id, Map map) {
+    public ModelAndView edit(@PathVariable(value = "id") long id, Map map) {
 
         Editor editor = editorService.findOne(id);
 

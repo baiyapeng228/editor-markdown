@@ -12,5 +12,5 @@ public interface EditorService {
     //存储博文对象
     void save(Editor editor);
     //根据存储业务主键id查询,返回博文实体
-    Editor findOne(int id);
+    Editor findOne(long id);
 }

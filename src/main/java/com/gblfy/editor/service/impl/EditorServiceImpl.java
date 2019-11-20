@@ -24,7 +24,7 @@ public class EditorServiceImpl implements EditorService {
     }
 
     @Override
-    public Editor findOne(int id) {
+    public Editor findOne(long id) {
         return editorMapper.selectById(id);
     }
 }
