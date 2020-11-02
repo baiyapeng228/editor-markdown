@@ -3,16 +3,17 @@
 [Editor.md](https://github.com/pandao/editor.md) 是一款开源的、可嵌入的 Markdown 在线编辑器（组件）,基于 CodeMirror、jQuery 和 Marked 构建。
 
 ## 使用手册：
-1.下载项目
+### Docker部署（推荐）
+1. 下载项目
 ```$xslt
 git clone git@github.com:gb-heima/editor-markdown.git
 ```
-2.创建数据库 
+2. 创建数据库 
 
 数据 库名 : editor-markdown 
 数据库编码: utf-8
 
-3.初始化数据库脚本
+3. 初始化数据库脚本
 ```$xslt
 DROP TABLE IF EXISTS `editor`;
 CREATE TABLE `editor` (
@@ -23,28 +24,74 @@ CREATE TABLE `editor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 ```
-4.修改数据库用户名/密码 默认root/root
+4. 修改数据库用户名/密码 默认root/root
 ![在数据库连接](https://img-blog.csdnimg.cn/20191120131045401.png)
 
-5.启动项目 任选其一即可
-![启动项目方式01](https://img-blog.csdnimg.cn/20191120131330128.png)
-![启动项目方式02](https://img-blog.csdnimg.cn/20191120131506586.png)
+5. 修改`application.yml`中`active: docker`
 
-6.浏览器输入localhost访问 默认为博文发表页面
+6. 安装镜像，在当前目录执行`docker build -t boot-md .`
+
+7. 运行容器，在当前目录执行`docker run -d -p 80:80 --name my-boot-md -v d:/upload:/data/upload [--link test-mysql:db] boot-md`，如果`mysql`也为容器，则使用`--link`参数指定连接容器，并在安装镜像前修改数据库主机地址为`db`
+
+8. 浏览器输入localhost访问 默认为博文发表页面
 ![初始化页面](https://img-blog.csdnimg.cn/2019112013213774.png)
 ![上传图片发表博文](https://img-blog.csdnimg.cn/20191120124842437.png)
 
-7.预览博文
+9. 预览博文
 [预览博文http://localhost/editorWeb/preview/{id}](http://localhost/editorWeb/preview/{id})
 
 ![右侧为预览效果图](https://img-blog.csdnimg.cn/20191120133343192.png)
 
-8.编辑博文
+10. 编辑博文
 [编辑博文http://localhost/editorWeb/edit/{id}](http://localhost/editorWeb/edit/{id})
 
 ![编辑页面](https://img-blog.csdnimg.cn/20191120133522696.png)
 
-9.博客地址：[https://blog.csdn.net/weixin_40816738/article/details/103160267](https://blog.csdn.net/weixin_40816738/article/details/103160267)
+11. 博客地址：[https://blog.csdn.net/weixin_40816738/article/details/103160267](https://blog.csdn.net/weixin_40816738/article/details/103160267)
+
+### 手动部署
+1. 下载项目
+```$xslt
+git clone git@github.com:gb-heima/editor-markdown.git
+```
+2. 创建数据库 
+
+数据 库名 : editor-markdown 
+数据库编码: utf-8
+
+3. 初始化数据库脚本
+```$xslt
+DROP TABLE IF EXISTS `editor`;
+CREATE TABLE `editor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text_content` longtext,
+  `content` longtext,
+  `create_time` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+```
+4. 修改数据库用户名/密码 默认root/root
+![在数据库连接](https://img-blog.csdnimg.cn/20191120131045401.png)
+
+5. 启动项目 任选其一即可
+![启动项目方式01](https://img-blog.csdnimg.cn/20191120131330128.png)
+![启动项目方式02](https://img-blog.csdnimg.cn/20191120131506586.png)
+
+6. 浏览器输入localhost访问 默认为博文发表页面
+![初始化页面](https://img-blog.csdnimg.cn/2019112013213774.png)
+![上传图片发表博文](https://img-blog.csdnimg.cn/20191120124842437.png)
+
+7. 预览博文
+[预览博文http://localhost/editorWeb/preview/{id}](http://localhost/editorWeb/preview/{id})
+
+![右侧为预览效果图](https://img-blog.csdnimg.cn/20191120133343192.png)
+
+8. 编辑博文
+[编辑博文http://localhost/editorWeb/edit/{id}](http://localhost/editorWeb/edit/{id})
+
+![编辑页面](https://img-blog.csdnimg.cn/20191120133522696.png)
+
+9. 博客地址：[https://blog.csdn.net/weixin_40816738/article/details/103160267](https://blog.csdn.net/weixin_40816738/article/details/103160267)
 
 到这里 SpringBoot集成Editor.md已经完成了！！！
 ----

@@ -28,7 +28,6 @@ public class EditorController {
     @PostMapping
     @ResponseBody
     public Result saveEditor(Editor editor) {
-        log.info(editor.toString());
         editorService.save(editor);
         return ResultUtil.success();
     }
